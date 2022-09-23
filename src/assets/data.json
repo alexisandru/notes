@@ -1,0 +1,34 @@
+{
+  "tags": [
+    {
+      "id": 1,
+      "tag": "work"
+    },
+    {
+      "id": 2,
+      "tag": "school"
+    },
+    {
+      "id": 3,
+      "tag": "important"
+    },
+    {
+      "id": 4,
+      "tag": "personal"
+    }
+  ],
+  "notes": [
+    {
+      "id": 2,
+      "title": "lorem ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem  Lorem ipsum dolor sit amet. Tincidunt ornare massa eget egestas. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Adipiscing at in tellus integer feugiat scelerisque varius morbi.",
+      "tags": [2, 3, 4]
+    },
+    {
+      "id": 1,
+      "title": "lorem ipsum",
+      "description": "Adipiscing at in tellus integer feugiat scelerisque varius morbi.",
+      "tags": [1, 2]
+    }
+  ]
+}
