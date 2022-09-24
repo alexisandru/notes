@@ -13,7 +13,8 @@ const Login = () => {
 
   return (
     <Container>
-      <button onClick={() => iniciador()}>Login with google</button>
+      <Title>Notes App</Title>
+      <Button onClick={() => iniciador()}>Login with Google</Button>
     </Container>
   )
 }
@@ -24,6 +25,19 @@ const Container = styled.div`
   height: 100%;
   width: 100%; 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const Title = styled.h1`
+  margin-bottom: 15px;
+  font-size: 2.2em;
+`
+
+const Button = styled.button`
+  font-size: 1.2em;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 600;
 `

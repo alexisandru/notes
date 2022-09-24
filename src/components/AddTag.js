@@ -23,7 +23,8 @@ const AddTag = ({close}) => {
   }
 
   const sendTag = () => {
-    if(newTag.title !== "") {
+    if(newTag.tag.trim().length !== 0) {
+      setNewTag({...newTag, tag: newTag.tag.trim()})
       dispatch(addTag(newTag))
       close(false)
       setNewTag({

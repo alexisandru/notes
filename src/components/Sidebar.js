@@ -120,6 +120,8 @@ const Container = styled.aside`
   width: 20%;
   height: 100%; 
   background-color: #fff;
+  z-index: 1;
+  box-shadow: 5px 0px 15px 5px rgba(0,0,0,0.1); 
 
   @media screen and (max-width: 650px) {     
     height: 100%; 

@@ -46,8 +46,10 @@ const CreateNote = ({close}) => {
   }
 
   const closeNote = () => {
-    dispatch(addNote(note))
-    close(false)
+    if (note.title !== "" && note.description !== "") {
+      dispatch(addNote(note))
+      close(false) 
+    }
   }
 
 

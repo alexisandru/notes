@@ -99,6 +99,9 @@ const Input = styled.input`
   border: none;
   outline: none;
 
+  box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.1); 
+
+
   @media screen and (max-width: 650px) {
       width: 100%; 
   }
