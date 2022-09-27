@@ -20,6 +20,17 @@ function App() {
   }
 
   useEffect(() => {
+    const t = JSON.parse(localStorage.getItem("theme"))
+    if (t) {
+      setTheme(t)
+    } 
+  }, [])
+
+  useEffect(() => {
+  localStorage.setItem('theme', JSON.stringify(theme));
+}, [theme]);
+
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
         if (user) { 
           setUser(prev => user)
