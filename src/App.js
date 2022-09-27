@@ -6,14 +6,22 @@ import { auth } from './firebase/firebaseConfig'
 import Home from './components/Home'
 import Login from './components/Login'
 
+import {ThemeProvider} from 'styled-components'
+import {GlobalStyles} from './components/globalStyle'
+import {lightTheme, darkTheme} from './components/Theme'
+
 function App() {
 
   const [user, setUser] = useState(false)
 
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
         if (user) { 
-          console.log(user)
           setUser(prev => user)
         } else {
           setUser(prev => false)     
@@ -22,11 +30,13 @@ function App() {
   }, [])
 
   return (
-    <div>
-    {
-      user ? <Home/> : <Login/>
-    }
-    </div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <div>
+      {
+        user ? <Home changeTheme={themeToggler} theme={theme}/> : <Login/>
+      }
+      </div>  
+    </ThemeProvider>
   );
 }
 

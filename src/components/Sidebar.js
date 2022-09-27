@@ -8,6 +8,9 @@ import add from '../assets/add.svg'
 import deleteIcon from '../assets/delete.svg'
 import close from '../assets/close.svg'
 
+import moon from '../assets/moon.svg'
+import sun from '../assets/sun.svg'
+
 import {doc, updateDoc, getDocs, where,  query, collection, deleteDoc} from 'firebase/firestore'
 import db, { auth } from '../firebase/firebaseConfig'
 import {signOut} from 'firebase/auth'
@@ -18,7 +21,7 @@ import AddTag from './AddTag'
 
 import {showTagNotes, showAllNotes, closeSidebar} from '../actions'
 
-const Sidebar = () => {
+const Sidebar = ({changeTheme, theme}) => {
   const dispatch = useDispatch()
   const tags = useSelector(state => state.tags)
   const selected = useSelector(state => state.showTags)
@@ -64,11 +67,14 @@ const Sidebar = () => {
   return (
     <Container show={side}>
 
-      <Title d>Notes App</Title>
+      
 
       <Header>
         <Title>Notes App</Title>
-        <Close src={close} onClick={() => dispatch(closeSidebar())}/>
+        <div>
+        <Icon src={theme === "dark" ? sun : moon} onClick={() => changeTheme()}/>
+        <Close d src={close} onClick={() => dispatch(closeSidebar())}/>
+        </div>
       </Header>
       
       <Tags>
@@ -119,7 +125,8 @@ const Container = styled.aside`
   flex-direction: column;
   width: 20%;
   height: 100%; 
-  background-color: #fff;
+  color: ${props => props.theme.color};
+  background-color: ${props => props.theme.noteBackground};
   z-index: 1;
   box-shadow: 5px 0px 15px 5px rgba(0,0,0,0.1); 
 
@@ -139,7 +146,11 @@ const Container = styled.aside`
 const Close = styled.img`
   width: 25px;
   right: 20px;
-  position: absolute;
+  //position: absolute;
+  filter: ${props => props.theme.icon};
+  @media screen and (min-width: 650px) {
+    display: ${props => props.d ? "none" : ""}
+  }
 `
 
 const Header = styled.div`
@@ -148,17 +159,19 @@ const Header = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 1em;
   padding-top: 10px;
 
-  @media screen and (min-width: 650px) {
-    display: none;
-  }
+  //@media screen and (min-width: 650px) {
+    //display: none;
+  //}
 `
 
 const TagName = styled.label`
   width: 100%;
   overflow: hidden;
+  cursor: pointer;
 `
 
 const Title = styled.h1`
@@ -173,6 +186,7 @@ const Tags = styled.ul`
   overflow: hidden;
   height: 100%;
   padding-top: 10px;  
+
 
   &:hover {
     overflow: auto;
@@ -214,8 +228,11 @@ const Tag = styled.li`
   align-items: center;
   flex-direction: row;
 
-  background-color: ${props => props.sel ? "rgba(0,0,0,0.1)" : "#fff"};
+  color: ${props => props.theme.color};
+
+  cursor: pointer;
   
+  background-color: ${props => props.sel ? props.theme.selectedTag : props.theme.noteBackground};
 
   &:hover {
     background-color: rgba(0,0,0,0.1);
@@ -224,15 +241,18 @@ const Tag = styled.li`
 
 
 `
+//background-color: ${props => props.sel ? "rgba(0,0,0,0.1)" : "#fff"};
 
 const Icon = styled.img`
   width: 25px;
   margin-right: 5px;
+  filter: ${props => props.theme.icon};
+  cursor: pointer;
 
   align-self: ${props => props.endd ? "flex-end" : ""};
 
   @media screen and (max-width: 650px) {
-    margin-right: ${props => props.endd ? "20px" : ""}
+    margin-right: ${props => props.endd ? "20px" : ""};
   }
 `
 

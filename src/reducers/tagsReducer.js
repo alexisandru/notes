@@ -2,6 +2,7 @@
 import { addDoc, collection, doc } from 'firebase/firestore'
 import db, {auth} from '../firebase/firebaseConfig'
 
+
 const tagsReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TAG":

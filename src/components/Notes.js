@@ -54,6 +54,7 @@ const Icon = styled.img`
   width: 25px;
   left: 0;
   position: absolute;
+  filter: ${props => props.theme.icon};
 `
 
 const Container = styled.main`
@@ -65,7 +66,8 @@ const Container = styled.main`
   padding: 30px;
   width: 80%;
   height: 100%;
-  background-color: #EFEFEF;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.color};
 
   @media screen and (max-width: 650px) {
       width: 100%; 
@@ -98,6 +100,11 @@ const Input = styled.input`
   border-radius: 10px;
   border: none;
   outline: none;
+  background-color: ${props => props.theme.inputBackground};
+  
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${props => props.theme.color};
+  }
 
   box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.1); 
 

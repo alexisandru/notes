@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import Sidebar from './Sidebar'
 import Notes from './Notes'
 
-const Home = () => {
+const Home = ({changeTheme, theme}) => {
 
   const dispatch = useDispatch()
   
@@ -39,7 +39,7 @@ const Home = () => {
 
   return(
     <Container>      
-        <Sidebar />
+        <Sidebar  changeTheme={changeTheme} theme={theme}/>
         <Notes/>
     </Container>
   )
@@ -50,6 +50,8 @@ export default Home
 const Container = styled.div`
   height: 100%;
   display: flex;
+
+  
 
   @media screen and (max-width: 650px) {
       width: 100%; 

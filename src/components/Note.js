@@ -1,27 +1,33 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 
 import {useSelector} from 'react-redux'
 
 const Note = ({show, note, id}) => {
 
-  const tags = useSelector(state => state.tags)
+  
+  const tags = useSelector(state => state.tags)  
+  
+
+
   
   const tagsItems = () => {
     if (note.tags.length > 2) {
-      const t =  note.tags.slice(0,2).map(item => <Tag>{tags.find(x => x.id === item).tag}</Tag>)
+      const t =  note.tags.slice(0,2).map(item => <Tag>{tags[item-1].tag}</Tag>)
+
       return (
-        <>
+        <Tags>
           {t}
           <Tag>+ {note.tags.length - 2} tags</Tag>
-        </>
+        </Tags>
       )
     } else {
-      return note.tags.map(item => <Tag>{tags.find(x => x.id === item).tag}</Tag>)
+      
+      return note.tags.map(item => <Tag>{tags[item-1].tag}</Tag>)
     } 
   }
 
-
+  
   return(
     <Container onClick={() => {show(true); id(note.id)}}>
       <Title>{note.title}</Title>
@@ -29,9 +35,10 @@ const Note = ({show, note, id}) => {
         {note.description}
       </Description>
       <Tags>
-         {tagsItems()}
+         
       </Tags>
     </Container>
+    
   )
 }
 
@@ -50,6 +57,8 @@ const Container = styled.div`
   overflow: hidden;
   cursor: pointer;
 
+  background-color: ${props => props.theme.noteBackground};
+
   box-shadow: 0px 10px 15px 5px rgba(0,0,0,0.1); 
 `
 
@@ -58,6 +67,7 @@ const Title = styled.h3`
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-bottom: 15px;
+  letter-spacing: 1px;
 `
 const Description = styled.div`
   font-size: 1em;

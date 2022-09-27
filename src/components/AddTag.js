@@ -64,6 +64,8 @@ const Container = styled.li`
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.3);
     font-size: 1em;
+    background-color: ${props => props.theme.inputBackground};
+    color: ${props => props.theme.color};
   }
 `
 
@@ -78,10 +80,9 @@ const Button = styled.button`
   width: 50%;
   padding: 6px 20px;
   border-radius: 8px;
-  background-color: ${props => props.save ? "#141414" : "#fff"};
-  color: ${props => props.save ? "#fff" : "#000"};
+  background-color: ${props => props.save ? props.theme.primaryButton : props.theme.secondaryButton};
+  color: ${props => props.save ? "#fff" : props.theme.color};
   cursor: pointer;
   font-size: 1em;
-  border: 1px solid rgba(0,0,0,0.9);
-
+  border: ${props => props.border ? `1px solid rgba(0,0,0,0.9)` : ''};
 `

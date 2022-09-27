@@ -137,6 +137,7 @@ const Delete = styled.img`
   align-self: flex-end;
   border-radius: 50%;
   padding: 5px;
+  filter: ${props => props.theme.icon};
 
   &:hover {
     background-color: rgba(0,0,0,0.1);
@@ -151,11 +152,11 @@ const TitleDiv = styled.div`
 const Btn = styled.button`
   padding: 6px 20px;
   border-radius: 8px;
-  background-color: ${props => props.save ? "#141414" : "#fff"};
-  color: ${props => props.save ? "#fff" : "#000"};
+  background-color: ${props => props.theme.secondaryButton};
+  color: ${props => props.save ? "#fff" : props.theme.color};
   cursor: pointer;
   font-size: 1em;
-  border: 1px solid rgba(0,0,0,0.9);
+  border: ${props => props.border ? `1px solid rgba(0,0,0,0.9)` : ''};
   margin-left: 10px;
 `
 
@@ -169,6 +170,9 @@ const Content = styled.div`
   justify-content: space-between;
   padding: 20px;
   border-radius: 15px;
+
+  background-color: ${props => props.theme.inputBackground};
+  color: ${props => props.theme.color};
 
   @media screen and (max-width: 650px) {
     width: 90%;
@@ -185,6 +189,9 @@ const Title = styled.input`
   font-weight: 500;
   outline: none;
   width: 100%;
+
+  background-color: ${props => props.theme.inputBackground};
+  color: ${props => props.theme.color};
 `
 
 const Description = styled.textarea`
@@ -197,6 +204,8 @@ const Description = styled.textarea`
   border: none;
   flex-grow: 1;
   width: 100%;
+  background-color: ${props => props.theme.inputBackground};
+  color: ${props => props.theme.color};
   
 `
 

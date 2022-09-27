@@ -35,7 +35,7 @@ const DropDown = ({setTags}) => {
     <Container>
       <ShowTags onClick={() => openDrop()}>
         Select tag
-        <img src={arrow} alt=".."/>
+        <Icon src={arrow} alt=".."/>
       </ShowTags>
       <Dropdown ref={dropdownRef}>
         <DropdownContent>
@@ -58,10 +58,14 @@ const Container = styled.div`
   }
 `
 
+const Icon = styled.img`
+  filter: ${props => props.theme.icon};
+`
+
 const Dropdown = styled.div`
   display: none;
   position: absolute;
-  background-color: #fff;
+  background-color: ${props => props.theme.inputBackground};
   padding: 15px 0;
   border-radius: 15px;
   width: 15%;
@@ -117,12 +121,13 @@ const CloseBtn = styled.button`
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 5px;
-  background-color: "#fff";
-  color: "#000";
+   background-color: ${props => props.theme.secondaryButton};
+  color: ${props => props.theme.color};
   cursor: pointer;
   font-size: 1em;
-  border: 1px solid rgba(0,0,0,0.9);
+  
   margin-left: 10px;
+  border: ${props => props.border ? `1px solid rgba(0,0,0,0.9)` : ''};
 
   &:hover {
     background-color: rgba(0,0,0,0.08);
